@@ -58,6 +58,8 @@ def retrace_optimal_path(memo: dict, n: int) -> [[int], float]:
 def plot_route(coordinates, optimal_path):
     for p1, p2 in zip(optimal_path[:-1], optimal_path[1:]):
         plt.plot([coordinates[p1, 0], coordinates[p2, 0]], [coordinates[p1, 1], coordinates[p2, 1]])
+    p1, p2 = optimal_path[-1], optimal_path[0]
+    plt.plot([coordinates[p1, 0], coordinates[p2, 0]], [coordinates[p1, 1], coordinates[p2, 1]])
 
 
 def generate_random_input(n_points):
