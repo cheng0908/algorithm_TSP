@@ -1,2 +1,2 @@
 # algorithm_TSP
- Comparison between ant algorithm and dynamic programming
+ Comparison of ant algorithm and dynamic programming
