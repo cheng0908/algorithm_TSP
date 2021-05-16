@@ -1,4 +1,4 @@
-from algorithm import ant_TSP, DP_TSP, generate_coordinate
+import ant_TSP, DP_TSP, generate_coordinate
 
 
 def Average(lst):
