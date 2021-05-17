@@ -259,8 +259,8 @@ class AntColonyOptimizer:
         else:
             fig, ax = plt.subplots(figsize=(20, 15))
             ax.plot(self.best_series, label="Best Run")
-            ax.set_xlabel("Iteration")
-            ax.set_ylabel("Performance")
+            ax.set_xlabel("Iteration", fontsize=24)
+            ax.set_ylabel("Performance", fontsize=24)
             ax.text(.8, .6,
                     'Ants: {}\nEvap Rate: {}\nIntensify: {}\nAlpha: {}\nBeta: {}\nBeta Evap: {}\nChoose Best: {}\n\nFit Time: {}m{}'.format(
                         self.ants, self.evaporation_rate, self.pheromone_intensification, self.heuristic_alpha,
@@ -268,7 +268,7 @@ class AntColonyOptimizer:
                         ["\nStopped Early!" if self.stopped_early else ""][0]),
                     bbox={'facecolor': 'gray', 'alpha': 0.8, 'pad': 10}, transform=ax.transAxes)
             ax.legend()
-            plt.title("Ant Colony Optimization Results (best: {})".format(np.round(self.best, 2)))
+            plt.title("Ant Colony Optimization Results (best: {})".format(np.round(self.best, 2)),fontsize=24)
             plt.show()
 
     def generate_random_input(n_points):
@@ -280,13 +280,18 @@ class AntColonyOptimizer:
         return coordinates, distances_array
 
 
-def INPUT_Ant_TSP(distances_array):
+def INPUT_Ant_TSP(distances_array, index_plot):
 
     problem = distances_array
     optimizer = AntColonyOptimizer(ants=10, evaporation_rate=.1, intensification=2, alpha=1, beta=1,
                                    beta_evaporation_rate=0, choose_best=.1)
 
     best_score, runtime = optimizer.fit(problem, 300)
-    # optimizer.plot()
+    if index_plot:
+        optimizer.plot()
 
     return float(best_score), runtime
+
+
+
+

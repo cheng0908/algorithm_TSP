@@ -1,9 +1,8 @@
-import ant_TSP, DP_TSP, generate_coordinate
+from algorithm import ant_TSP, DP_TSP, generate_coordinate
 
 
 def Average(lst):
     return sum(lst) / len(lst)
-
 
 
 def _relative_error(int_1, int_2):
@@ -18,8 +17,14 @@ result_relative_error = []
 
 
 n_point = int(input("How many Point You Want?(From 4): "))
-# generate = generate_coordinate
+option_plot = input("Do you want plot the graph? (y:yes, n:no): ").lower()
+fn = str(input("Output File Name: "))
+fn = fn + '.txt'
 
+if option_plot == 'y':
+    option_plot = True
+else:
+    option_plot = False
 
 for i in range(4, (n_point + 1)):
     generate = generate_coordinate
@@ -31,17 +36,20 @@ for i in range(4, (n_point + 1)):
     for j in range(5):
         coordinates, distance_array = generate.generate_random_input(input_size)
 
-        #   DP_TSP
-        # if i == n_point:
-        #     plot = True
-        # else:
-        #     plot = False
+        # DP_TSP
+        if option_plot:
+            if i == n_point:
+                plot = True
+            else:
+                plot = False
+        else:
+            plot = False
 
-        DP_runtime, DP_optimal_cost, DP_optimal_path = DP_TSP.INPUT_DP_TSP(coordinates, distance_array, index_plot=False)
+        DP_runtime, DP_optimal_cost, DP_optimal_path = DP_TSP.INPUT_DP_TSP(coordinates, distance_array, index_plot=plot)
 
         #   ANT_TSP
         ant_TSP_model = ant_TSP
-        ant_BestScore, ant_Runtime = ant_TSP_model.INPUT_Ant_TSP(distance_array)
+        ant_BestScore, ant_Runtime = ant_TSP_model.INPUT_Ant_TSP(distance_array, plot)
 
         #   Store Result：
         temp_result_ant_BestScore.append(ant_BestScore)
@@ -60,7 +68,6 @@ for i in range(4, (n_point + 1)):
     )
 
     #   Saving Result(Real Time)
-    fn = 'output_v3.txt'    # File name
 
     with open(fn, 'w')as file_Obj:
         file_Obj.write('result_ant_BestScore=' + str(result_ant_BestScore) + '\n')
