@@ -21,7 +21,7 @@ n_point = int(input("How many Point You Want?(From 4): "))
 # generate = generate_coordinate
 
 
-for i in range(20, (n_point + 1)):
+for i in range(4, (n_point + 1)):
     generate = generate_coordinate
     input_size = i  # How many point we have
     temp_result_DP_runtime = []
