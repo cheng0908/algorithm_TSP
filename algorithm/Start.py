@@ -75,9 +75,6 @@ for i in range(4, (n_point + 1)):
         file_Obj.write('result_DP_optimal_cost=' + str(result_DP_optimal_cost) + '\n')
         file_Obj.write('result_DP_runtime=' + str(result_DP_runtime) + '\n')
         file_Obj.write('result_relative_error=' + str(result_relative_error) + '\n')
-    
-    #aaa
-    #bbb
 
 
 
